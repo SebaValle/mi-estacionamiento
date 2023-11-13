@@ -8,3 +8,5 @@ def inicio2(request):
     return render(request, 'paginas/inicio.html')
 def anuncio(request):
     return render(request, 'anuncio/index.html')
+def crear(request):
+    return render(request, 'anuncio/crear.html')
