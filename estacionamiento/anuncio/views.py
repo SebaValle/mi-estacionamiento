@@ -10,3 +10,5 @@ def anuncio(request):
     return render(request, 'anuncio/index.html')
 def crear(request):
     return render(request, 'anuncio/crear.html')
+def modificar(request):
+    return render(request, 'anuncio/modificar.html')
