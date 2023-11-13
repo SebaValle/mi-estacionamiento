@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block titulo %}  esto es repetitivo verdad  {% endblock %}
+
+{% block contenido %} 
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                Header
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">auncio de prueba</h4>
+                <div class="table-responsive">
+                    <table class="table table-primary">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">dueño</th>
+                                <th scope="col">horario</th>
+                                <th scope="col">descripcion</th>
+                                <th scope="col">precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="">
+                                <td>01</td>
+                                <td>oscar</td>
+                                <td>15:30</td>
+                                <td>un lugar muy bonito con vista al mar</td>
+                                <td>50000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
