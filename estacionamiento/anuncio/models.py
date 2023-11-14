@@ -8,3 +8,7 @@ class publicacion(models.Model):
     horario = models.CharField(max_length=100)
     descripcion = models.TextField(max_length=200, verbose_name='descripcion')
     precio = models.CharField(max_length=100, verbose_name='precio')
+
+    def __str__(self):
+        fila = "dueño: " + self.dueno + " - " +  "descripcion: " + self.descripcion
+        return fila
