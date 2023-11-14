@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import publicacion
 from .forms import anuncioForm
@@ -15,7 +15,10 @@ def anuncio(request):
     return render(request, 'anuncio/index.html', {'publicaciones': publicaciones})
 
 def crear(request):
-    formulario = anuncioForm(request.POST or None)
+    formulario = anuncioForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('anuncio')
     return render(request, 'anuncio/crear.html', {'formulario': formulario})
 
 def modificar(request):
