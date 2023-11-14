@@ -1,22 +1,10 @@
 <form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {% for campo in formulario %}
     <div class="mb-3">
       <label for="" class="form-label">dueño</label>
       <input type="text"
         class="form-control" name="" id="" aria-describedby="helpId" placeholder="dueño">
     </div>
-    <div class="mb-3">
-        <label for="" class="form-label">horario</label>
-        <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="horario">
-    </div>
-    <div class="mb-3">
-        <label for="" class="form-label">descripcion</label>
-        <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="descripcion">
-    </div>
-    <div class="mb-3">
-        <label for="" class="form-label">precio</label>
-        <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="precio">
-    </div>
+    {% endfor %}
 </form>

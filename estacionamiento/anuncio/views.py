@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import publicacion
+from .forms import anuncioForm
 
 # Create your views here.
 def inicio(request):
@@ -14,7 +15,8 @@ def anuncio(request):
     return render(request, 'anuncio/index.html', {'publicaciones': publicaciones})
 
 def crear(request):
-    return render(request, 'anuncio/crear.html')
+    formulario = anuncioForm(request.POST or None)
+    return render(request, 'anuncio/crear.html', {'formulario': formulario})
 
 def modificar(request):
     return render(request, 'anuncio/modificar.html')
