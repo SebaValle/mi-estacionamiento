@@ -8,13 +8,25 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
+
             </div>
             <div class="card-body">
                 <h4 class="card-title">ingrese un nombre</h4>
-                
+                <form method="get">
+                    <div id="custom-search-input">
+                        <div class="input-group col-12">
+                            <input type="text" class="form-control" placeholder="Buscar" name="Buscar">
+                        </div>
+                        <div>
+                            <h4>Resultados:</h4>
+                            {% include 'anuncio/form.html' %}
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock %}
