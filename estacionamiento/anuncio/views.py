@@ -23,3 +23,6 @@ def crear(request):
 
 def modificar(request):
     return render(request, 'anuncio/modificar.html')
+
+def buscador(request):
+    return render(request, 'anuncio/buscador.html')

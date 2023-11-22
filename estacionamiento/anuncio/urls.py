@@ -7,4 +7,5 @@ urlpatterns = [
     path('anuncio', views.anuncio, name='anuncio'),
     path('anuncio/crear', views.crear, name='crear'),
     path('anuncio/modificar', views.modificar, name='modificar'),
+    path('anuncio/buscador', views.buscador, name='buscador'),
 ]
