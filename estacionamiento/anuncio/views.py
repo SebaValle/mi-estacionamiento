@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import publicacion
 from .forms import anuncioForm
+from django.db.models import Q
 
 # Create your views here.
 def inicio(request):
@@ -30,7 +31,12 @@ def modificar(request, id):
     return render(request, 'anuncio/modificar.html', {'formulario': formulario})
 
 def buscador(request):
+    busqueda = request.POST.get("buscar")
     publicaciones = publicacion.objects.all()
+    if busqueda:
+        publicaciones = publicacion.objects.filter(
+            Q(dueno__incontains = busqueda)
+        ).distinct()
     return render(request, 'anuncio/buscador.html', {'publicaciones': publicaciones})
 
 def eliminar(request, id):
