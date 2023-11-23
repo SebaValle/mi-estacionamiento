@@ -26,8 +26,8 @@
                             <tr>
                                 <th scope="col">id</th>
                                 <th scope="col">dueño</th>
+                                <th scope="col">imagen</th>
                                 <th scope="col">horario</th>
-                                <th scope="col">descripcion</th>
                                 <th scope="col">precio</th>
                                 <th scope="col">otros</th>
                             </tr>
@@ -37,8 +37,10 @@
                             <tr class="">
                                 <td>{{publicacion.id}}</td>
                                 <td>{{publicacion.dueno}}</td>
+                                <td>
+                                    <img src="{{publicacion.imagen.url}}" height="100"/>
+                                </td>
                                 <td>{{publicacion.horario}}</td>
-                                <td>{{publicacion.descripcion}}</td>
                                 <td>{{publicacion.precio}}</td>
                                 <td><a name="" id="" class="btn btn-primary" href="{% url 'modificar' %}" role="button">examinar</a></td>
                             </tr>
