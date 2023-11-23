@@ -27,3 +27,8 @@ def modificar(request):
 def buscador(request):
     publicaciones = publicacion.objects.all()
     return render(request, 'anuncio/buscador.html', {'publicaciones': publicaciones})
+
+def eliminar(request, id):
+    publicaciones = publicacion.objects.get(id=id)
+    publicaciones.delete()
+    return redirect('anuncio')
