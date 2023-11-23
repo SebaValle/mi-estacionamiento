@@ -35,10 +35,10 @@ def buscador(request):
     publicaciones = publicacion.objects.all()
     if queryset:
         publicaciones = publicacion.objects.filter(
-            Q(dueno = queryset) |
-            Q(horario = queryset) |
-            Q(descripcion = queryset) |
-            Q(precio = queryset)
+            Q(dueno__icontains = queryset) |
+            Q(horario__icontains = queryset) |
+            Q(descripcion__icontains = queryset) |
+            Q(precio__icontains = queryset)
         ).distinct()
     return render(request, 'anuncio/buscador.html', {'publicaciones': publicaciones})
 
