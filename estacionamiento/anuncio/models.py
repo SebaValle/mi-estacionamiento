@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 
 # Create your models here.
@@ -14,3 +15,7 @@ class publicacion(models.Model):
     def __str__(self):
         fila = "dueño: " + self.dueno + " - " +  "descripcion: " + self.descripcion
         return fila
+    
+    def delete(self, using=None, keep_parents=False):
+        self.imagen.storage.delete(self.imagen.name)
+        super().delete()
