@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block titulo %}  Buscador  {% endblock %}
+{% block titulo %}  esto es repetitivo verdad  {% endblock %}
 
 {% block contenido %} 
 
@@ -8,25 +8,47 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">ingrese un nombre</h4>
-                <form method="get">
-                    <div id="custom-search-input">
-                        <div class="input-group col-12">
-                            <input type="text" class="form-control" placeholder="Buscar" name="Buscar">
-                        </div>
-                        <div>
-                            <h4>Resultados:</h4>
-                            {% include 'anuncio/form.html' %}
-                        </div>
+                <form action="" method="post">
+                    <div>
+                        <label for="">Indresa un dato</label>
+                    </div>
+                    <div>
+                        <input type="text" name="" id="">
+                        <a name="" id="" class="btn btn-primary submit" href="" role="button">Comenzar busqueda</a>
                     </div>
                 </form>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">auncio de prueba</h4>
+                <div class="table-responsive">
+                    <table class="table table-primary">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">dueño</th>
+                                <th scope="col">horario</th>
+                                <th scope="col">descripcion</th>
+                                <th scope="col">precio</th>
+                                <th scope="col">otros</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for publicacion in publicaciones %}
+                            <tr class="">
+                                <td>{{publicacion.id}}</td>
+                                <td>{{publicacion.dueno}}</td>
+                                <td>{{publicacion.horario}}</td>
+                                <td>{{publicacion.descripcion}}</td>
+                                <td>{{publicacion.precio}}</td>
+                                <td><a name="" id="" class="btn btn-primary" href="{% url 'modificar' %}" role="button">examinar</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>   
             </div>
         </div>
     </div>
 </div>
-
 
 {% endblock %}
