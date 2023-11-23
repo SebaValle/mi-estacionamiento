@@ -10,4 +10,5 @@ urlpatterns = [
     path('anuncio/modificar', views.modificar, name='modificar'),
     path('', views.buscador, name='buscador'),
     path('eliminar/<int:id>', views.eliminar, name='eliminar'),
+    path('anuncio/modificar/<int:id>', views.modificar, name='modificar'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

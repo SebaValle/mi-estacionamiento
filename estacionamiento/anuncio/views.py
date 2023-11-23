@@ -21,8 +21,10 @@ def crear(request):
         return redirect('anuncio')
     return render(request, 'anuncio/crear.html', {'formulario': formulario})
 
-def modificar(request):
-    return render(request, 'anuncio/modificar.html')
+def modificar(request, id):
+    publicaciones = publicacion.objects.get(id=id)
+    formulario = anuncioForm(request.POST or None, request.FILES or None, instance=publicaciones)
+    return render(request, 'anuncio/modificar.html', {'formulario': formulario})
 
 def buscador(request):
     publicaciones = publicacion.objects.all()
