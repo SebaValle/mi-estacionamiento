@@ -8,7 +8,8 @@
         name="{{ campo.name }}" 
         id="" 
         aria-describedby="helpId" 
-        placeholder="{{ campo.label }}">
+        placeholder="{{ campo.label }}"
+        value="{{ campo.value | default:' ' }}">
     </div>
     <div class="col-12 help-text"> {{ campo.errors }} </div>
     {% endfor %}
