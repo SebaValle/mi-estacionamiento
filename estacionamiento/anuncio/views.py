@@ -24,6 +24,9 @@ def crear(request):
 def modificar(request, id):
     publicaciones = publicacion.objects.get(id=id)
     formulario = anuncioForm(request.POST or None, request.FILES or None, instance=publicaciones)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect('anuncio')
     return render(request, 'anuncio/modificar.html', {'formulario': formulario})
 
 def buscador(request):
