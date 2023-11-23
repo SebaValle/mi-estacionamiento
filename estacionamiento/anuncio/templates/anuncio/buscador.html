@@ -5,16 +5,17 @@
 {% block contenido %} 
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 search">
         <div class="card">
             <div class="card-header">
-                <form action="" method="POST">
-                    <div class="input-group">
-                        <input type="text" placeholder="buscar" name="buscar" value="">
-                        <div class="input-group-append">
-                            <button class="btn btn-success" type="submit">
-                                <span class="badge bg-su-success">buscar</span>
-                            </button>
+                <form method="get">
+                    <div id="custom-search-input">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="buscar" name="buscar">
+                            <span class="input-group-list">
+                                <i class="icon icon-search"></i>
+                                <button type="submit" class="btn btn-primary">buscar</button>
+                            </span>
                         </div>
                     </div>
                 </form>
