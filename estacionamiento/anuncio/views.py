@@ -49,4 +49,13 @@ def eliminar(request, id):
 
 def examinar(request, id):
     publicacion_actual = publicacion.objects.get(id=id)
+
+    if request.method == 'POST':
+        if 'arrendar' in request.POST:
+            publicacion_actual.estado = 'ocupado'
+        elif 'cancelar' in request.POST:
+            publicacion_actual.estado = 'libre'
+
+        publicacion_actual.save()
+
     return render(request, 'anuncio/examinar.html', {'publicacion_actual': publicacion_actual})
