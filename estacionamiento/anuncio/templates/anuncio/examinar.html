@@ -20,8 +20,9 @@
                     <p>Estado: {{ publicacion_actual.estado }}</p>
                     <!-- Agrega más campos según sea necesario -->
                 
-                    <button type="submit" name="arrendar" class="btn btn-primary">Arrendar</button>
-                    <button type="submit" name="cancelar" class="btn btn-primary">Cancelar</button>
+                    <button type="submit" name="arrendar" class="btn btn-primary" {% if publicacion_actual.estado == 'ocupado' %}disabled{% endif %}>Arrendar</button>
+                    <button type="submit" name="cancelar" class="btn btn-primary" {% if publicacion_actual.estado == 'libre' %}disabled{% endif %}>Cancelar</button>
+                </form>
                 </form>
             </div>
         </div>
