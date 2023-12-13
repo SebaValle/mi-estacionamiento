@@ -21,7 +21,7 @@
                 </form>
             </div>
             <div class="card-body">
-                <h4 class="card-title">auncio de prueba</h4>
+                <h4 class="card-title">Lista de anuncios </h4>
                 <div class="table-responsive">
                     <table class="table table-primary">
                         <thead>
@@ -44,7 +44,7 @@
                                 </td>
                                 <td>{{publicacion.horario}}</td>
                                 <td>{{publicacion.precio}}</td>
-                                <td><a name="" id="" class="btn btn-primary" href="{% url 'modificar' %}" role="button">examinar</a></td>
+                                <td><a name="" id="" class="btn btn-primary" href="{% url 'examinar' publicacion.id %}" role="button">examinar</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

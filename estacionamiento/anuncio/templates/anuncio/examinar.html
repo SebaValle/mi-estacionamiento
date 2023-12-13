@@ -4,4 +4,23 @@
 
 {% block contenido %} 
 
+<<div class="row">
+    <div class="col-12 search">
+        <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h4>ID: {{ publicacion_actual.id }}</h4>
+                <p>Dueño: {{ publicacion_actual.dueno }}</p>
+                <p>Horario: {{ publicacion_actual.horario }}</p>
+                <p>Precio: {{ publicacion_actual.precio }}</p>
+                <!-- Agrega más campos según sea necesario -->
+
+                <a class="btn btn-primary" role="button">Arrendar</a>
+                <a class="btn btn-primary" role="button">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

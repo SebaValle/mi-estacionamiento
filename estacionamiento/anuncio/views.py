@@ -46,3 +46,7 @@ def eliminar(request, id):
     publicaciones = publicacion.objects.get(id=id)
     publicaciones.delete()
     return redirect('anuncio')
+
+def examinar(request, id):
+    publicacion_actual = publicacion.objects.get(id=id)
+    return render(request, 'anuncio/examinar.html', {'publicacion_actual': publicacion_actual})
