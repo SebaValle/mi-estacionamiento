@@ -79,4 +79,4 @@ def registro(request):
     else:
         formulario = RegistroForm()
 
-    return render(request, 'login/registro.html', {'formulario': formulario})
+    return render(request, 'anuncio/registro.html', {'formulario': formulario})
