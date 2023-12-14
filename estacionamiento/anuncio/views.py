@@ -4,6 +4,7 @@ from .models import publicacion
 from .forms import anuncioForm
 from django.db.models import Q
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def inicio(request):
@@ -66,6 +67,14 @@ def login(request):
     return render(request, 'anuncio/login.html', {'publicaciones': publicaciones})
 
 def registro(request):
-    return render(request, 'anuncio/registro.html',{
-        'form': UserCreationForm
-    })
+    if request.method == 'GET':
+        return render(request, 'anuncio/registro.html', {'form': UserCreationForm})
+    else:
+        if request.POST['password1'] == request.POST['password2']:
+            try:
+                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
+                user.save()
+                return HttpResponse('datos guardados exitosamente')
+            except:
+                return HttpResponse('El usuario ya existe')
+        return HttpResponse('las contraseñas no coinciden')
