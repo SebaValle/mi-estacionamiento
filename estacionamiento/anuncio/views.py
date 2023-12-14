@@ -3,8 +3,7 @@ from django.http import HttpResponse
 from .models import publicacion
 from .forms import anuncioForm
 from django.db.models import Q
-from django.contrib.auth import login, authenticate
-from .forms import RegistroForm
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def inicio(request):
@@ -67,16 +66,6 @@ def login(request):
     return render(request, 'anuncio/login.html', {'publicaciones': publicaciones})
 
 def registro(request):
-    if request.method == 'POST':
-        formulario = RegistroForm(request.POST)
-        if formulario.is_valid():
-            usuario = formulario.save(commit=False)
-            password = formulario.cleaned_data.get('password')
-            usuario.set_password(password)
-            usuario.save()
-            login(request, usuario)
-            return redirect('anuncio')  # Redirige a la página que desees después del registro
-    else:
-        formulario = RegistroForm()
-
-    return render(request, 'anuncio/registro.html', {'formulario': formulario})
+    return render(request, 'anuncio/registro.html',{
+        'form': UserCreationForm
+    })
