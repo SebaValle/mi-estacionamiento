@@ -1,4 +1,6 @@
 {% load static %}
+
+{% load humanize %}
 <!doctype html>
 <html lang="en">
 
@@ -20,9 +22,9 @@
     <!-- place navbar here -->
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="{% url 'buscador'%}">buscador</a>
-        <a class="nav-item nav-link active" href="{% url 'anuncio'%}">anuncio</a>
-        <a class="nav-item nav-link active" href="{% url 'inicio'%}">cuenta</a>
+        <a class="nav-item nav-link active" href="{% url 'buscador'%}">Buscador</a>
+        <a class="nav-item nav-link active" href="{% url 'anuncio'%}">Anuncio</a>
+        <a class="nav-item nav-link active" href="{% url 'superLogin'%}">Cerrar Sesion</a>
 
       </div>
     </nav>

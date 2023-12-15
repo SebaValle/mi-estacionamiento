@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import publicacion
 from .forms import anuncioForm
 from django.db.models import Q
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -70,6 +70,10 @@ def examinar(request, id):
         publicacion_actual.save()
 
     return render(request, 'anuncio/examinar.html', {'publicacion_actual': publicacion_actual})
+
+def logout_dueno(request):
+    logout(request)
+    return redirect('inicio2')
 
 def superLogin(request):
     if request.method == 'GET':
