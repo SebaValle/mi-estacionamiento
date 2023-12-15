@@ -6,18 +6,23 @@ from django.db.models import Q
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def inicio(request):
     return HttpResponse("<h1>hola a todos</h1>")
 
+@login_required
 def inicio2(request):
     return render(request, 'paginas/inicio.html')
 
+@login_required
 def anuncio(request):
     publicaciones = publicacion.objects.all()
     return render(request, 'anuncio/index.html', {'publicaciones': publicaciones})
 
+@login_required
 def crear(request):
     formulario = anuncioForm(request.POST or None, request.FILES or None)
     if formulario.is_valid():
@@ -25,6 +30,7 @@ def crear(request):
         return redirect('anuncio')
     return render(request, 'anuncio/crear.html', {'formulario': formulario})
 
+@login_required
 def modificar(request, id):
     publicaciones = publicacion.objects.get(id=id)
     formulario = anuncioForm(request.POST or None, request.FILES or None, instance=publicaciones)
@@ -33,6 +39,7 @@ def modificar(request, id):
         return redirect('anuncio')
     return render(request, 'anuncio/modificar.html', {'formulario': formulario})
 
+@login_required
 def buscador(request):
     queryset = request.GET.get("buscar")
     publicaciones = publicacion.objects.all()
@@ -44,12 +51,13 @@ def buscador(request):
             Q(precio__icontains = queryset)
         ).distinct()
     return render(request, 'anuncio/buscador.html', {'publicaciones': publicaciones})
-
+@login_required
 def eliminar(request, id):
     publicaciones = publicacion.objects.get(id=id)
     publicaciones.delete()
     return redirect('anuncio')
 
+@login_required
 def examinar(request, id):
     publicacion_actual = publicacion.objects.get(id=id)
 
