@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import publicacion
 from .forms import anuncioForm
 from django.db.models import Q
+from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -74,7 +75,10 @@ def registro(request):
             try:
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
                 user.save()
-                return HttpResponse('datos guardados exitosamente')
+                login(request, user)
+                return redirect('login')
             except:
-                return HttpResponse('El usuario ya existe')
-        return HttpResponse('las contraseñas no coinciden')
+                return render(request, 'anuncio/registro.html', {'form': UserCreationForm, 
+                "Error": 'El usuario ya existe' })
+        return render(request, 'anuncio/registro.html', {'form': UserCreationForm, 
+        "Error": 'las contraseñas no coinciden' })
