@@ -4,7 +4,7 @@ from .models import publicacion
 from .forms import anuncioForm
 from django.db.models import Q
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -64,8 +64,8 @@ def examinar(request, id):
     return render(request, 'anuncio/examinar.html', {'publicacion_actual': publicacion_actual})
 
 def login(request):
-    publicaciones = publicacion.objects.all()
-    return render(request, 'anuncio/login.html', {'publicaciones': publicaciones})
+    return render(request, 'anuncio/login.html', {
+        'form': AuthenticationForm})
 
 def registro(request):
     if request.method == 'GET':
