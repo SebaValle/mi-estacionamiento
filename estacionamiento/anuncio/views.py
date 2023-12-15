@@ -75,7 +75,7 @@ def superLogin(request):
             'Error': 'El usuario o contraseña son erroneos'})
         else:
             login(request, user)
-            return redirect('anuncio/buscador')
+            return redirect('buscador')
 
 def registro(request):
     if request.method == 'GET':
