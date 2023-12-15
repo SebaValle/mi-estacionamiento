@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import publicacion
 from .forms import anuncioForm
 from django.db.models import Q
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
@@ -63,9 +63,19 @@ def examinar(request, id):
 
     return render(request, 'anuncio/examinar.html', {'publicacion_actual': publicacion_actual})
 
-def login(request):
-    return render(request, 'anuncio/login.html', {
-        'form': AuthenticationForm})
+def superLogin(request):
+    if request.method == 'GET':
+        return render(request, 'anuncio/superLogin.html', {
+            'form': AuthenticationForm})
+    else:
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        if user is None:
+            return render(request, 'anuncio/superLogin.html', {
+            'form': AuthenticationForm, 
+            'Error': 'El usuario o contraseña son erroneos'})
+        else:
+            login(request, user)
+            return redirect('anuncio/buscador')
 
 def registro(request):
     if request.method == 'GET':
@@ -76,7 +86,7 @@ def registro(request):
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('login')
+                return redirect('superLogin')
             except:
                 return render(request, 'anuncio/registro.html', {'form': UserCreationForm, 
                 "Error": 'El usuario ya existe' })

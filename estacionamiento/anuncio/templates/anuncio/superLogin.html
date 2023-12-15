@@ -24,7 +24,12 @@
                         <div class="card-header">Bienvenido</div>
                         <br>
                         <div class="card-body">
-                            {{ form }}
+                            <form method="post" action="{% url 'superLogin' %}">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <h2> {{Error}}</h2>
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                            </form>
                         </div>
                     </div>
                     <br>
